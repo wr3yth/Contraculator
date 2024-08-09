@@ -1,29 +1,24 @@
-// Define global variables to store base and custom numerals
-var base = 10; // Default base
-var customNumerals = "0123456789"; // Default custom numerals
+var base = 10; 
+var customNumerals = "0123456789"; 
+var inDecimal = document.getElementById('in-decimal');
 
-//activatePlaceholder
+// Activate the placeholder for the input fields
 function activatePlaceholder() {
-
-    var inputField = document.getElementById("numerals");
-    inputField.value = "0123456789";
+    var numeralsField = document.getElementById("numerals");
+    numeralsField.placeholder = "0123456789";
+    updateInDecimalPlaceholder(customNumerals.length);
 }
 
-activatePlaceholder()
-
-// Function to update result box with base and custom numerals
+// Function to update the result box with base and custom numerals
 function updateResultBox() {
-    
-    var howbase = charSeparetor();
+    var howbase = charSeparator();
     var resultBox = document.getElementById("resultBox");
-    resultBox.innerHTML =  "Custom Numerals: " + howbase + "<br>Base: " + base;
+    resultBox.innerHTML = "Custom Numerals: " + howbase + "<br>Base: " + base;
     resultBox.style.display = "block";
-    
 }
 
 // Function to put + between each character
-function charSeparetor() {
-
+function charSeparator() {
     var newbase = "";
     for (var i = 0; i < customNumerals.length; i++) {
         newbase += customNumerals[i];
@@ -42,16 +37,52 @@ function charGuide(customNumerals) {
     return guide;
 }
 
+// Function to update the placeholder of inDecimal
+function updateInDecimalPlaceholder(length) {
+    var placeholderText = "";
+    for (var i = 0; i < length; i++) {
+        placeholderText += i;
+        if (i < length - 1) {
+            placeholderText += ",";
+        }
+    }
+    inDecimal.placeholder = placeholderText || "0";
+}
+
+// Event listener to update the inDecimal placeholder based on the numerals input length
+document.getElementById("numerals").addEventListener("input", function() {
+    updateInDecimalPlaceholder(this.value.length);
+});
+
+/*
+function updateDecalculatePlaceholder(length) {
+    var placeholderText = "";
+    for (var i = 0; i < length; i++) {
+        placeholderText += i;
+        if (i < length - 1) {
+            placeholderText += ",";
+        }
+    }
+    Decalculate.placeholder = placeholderText || "0";
+}
+
+
+document.getElementById("calculate").addEventListener("input", function() {
+    updateDecalculatePlaceholder(this.value.length);
+});
+*/
+
 // Apply button functionality
 document.getElementById("applyBtn").addEventListener("click", function() {
     customNumerals = document.getElementById("numerals").value;
+    //inDecimal.value = document.getElementById("numerals").value;
     base = customNumerals.length; // Update the base
+    updateInDecimalPlaceholder(customNumerals.length); // Update inDecimal placeholder
     updateResultBox();
 });
 
 // Calculation input functionality
 document.getElementById("calculation").addEventListener("keypress", function(e) {
-    
     if (e.key === "Enter") {
         var calculation = document.getElementById("calculation").value;
         // Perform calculation using custom numerals
@@ -62,8 +93,6 @@ document.getElementById("calculation").addEventListener("keypress", function(e) 
         document.getElementById("calculation").value = "";
     }
 });
-
-
 
 // Function to evaluate the calculation
 function evaluateCalculation(calculation) {
@@ -110,7 +139,6 @@ function convertToCustomBase(number) {
     }
     return customNumber || customNumerals[0];
 }
-
 
 // Initial update of the result box
 updateResultBox();
