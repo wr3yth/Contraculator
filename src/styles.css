@@ -16,21 +16,21 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    width: 400px;
+    width: 100%;
+    max-width: 450px;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 16px; 
     display: block;
 }
-
-
 
 input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #373b41;
     background-color: #1d1f21;
@@ -58,25 +58,21 @@ input[type="button"]:hover {
 #resultContainer {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
-#resultBox, #resultBox2, #decimalResultBox {
-    width: 48%;
-    height: 120px;
+#resultBox, #resultBox2 {
+    flex: 1 1 0%;
+    min-height: 120px;
     background-color: #373b41;
     color: #c5c8c6;
     padding: 15px;
     border-radius: 5px;
     margin-top: 20px;
     box-sizing: border-box;
+    display: flex;
 }
 
-
-
-
-#calculator {
-    margin-bottom: 20px;
-}
 
 input[type="text"]::placeholder {
     color: #707880;

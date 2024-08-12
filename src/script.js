@@ -15,7 +15,6 @@ function updateResultBox() {
     const howbase = charSeparator();
     const resultBox = document.getElementById("resultBox");
     resultBox.innerHTML = "Custom Numerals: " + howbase + "<br>Base: " + base;
-    resultBox.style.display = "block";
 }
 
 // Function to update the result box 2 with decimal and default numerals
@@ -23,7 +22,6 @@ function updateResultBox2() {
     const howbase = charSeparator();
     const resultBox2 = document.getElementById("resultBox2");
     resultBox2.innerHTML = "in decimal: " + inDecimal.placeholder + "<br>Base: " + base;
-    resultBox2.style.display = "block";
 }
 
 // Function to put "," between each character
