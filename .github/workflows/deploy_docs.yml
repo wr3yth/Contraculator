@@ -12,7 +12,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           
@@ -28,13 +28,14 @@ jobs:
 
       - name: Build
         run: |
-          pnpm generate
+          NUXT_APP_BASE_URL=/Contraculator/ npx nuxt build --preset github_pages
+
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: ./.output/public
 
       - name: Deploy
         id: deployment
