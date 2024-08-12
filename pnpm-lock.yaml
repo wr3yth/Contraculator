@@ -7,12 +7,11 @@ settings:
 importers:
 
   .:
-    dependencies:
-      eslint:
-        specifier: ^9.9.0
-        version: 9.9.0
     devDependencies:
       '@eslint/js':
+        specifier: ^9.9.0
+        version: 9.9.0
+      eslint:
         specifier: ^9.9.0
         version: 9.9.0
       eslint-config-prettier:
