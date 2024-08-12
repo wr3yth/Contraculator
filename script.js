@@ -2,6 +2,7 @@ var base = 10;
 var customNumerals = "0123456789"; 
 var inDecimal = document.getElementById('in-decimal');
 
+
 // Activate the placeholder for the input fields
 function activatePlaceholder() {
     var numeralsField = document.getElementById("numerals");
@@ -17,7 +18,15 @@ function updateResultBox() {
     resultBox.style.display = "block";
 }
 
-// Function to put + between each character
+// Function to update the result box 2 with decimal and default numerals
+function updateResultBox2() {
+    var howbase = charSeparator();
+    var resultBox2 = document.getElementById("resultBox2");
+    resultBox2.innerHTML = "in decimal: " + inDecimal.placeholder + "<br>Base: " + base;
+    resultBox2.style.display = "block";
+}
+
+// Function to put "," between each character
 function charSeparator() {
     var newbase = "";
     for (var i = 0; i < customNumerals.length; i++) {
@@ -38,6 +47,7 @@ function charGuide(customNumerals) {
 }
 
 // Function to update the placeholder of inDecimal
+
 function updateInDecimalPlaceholder(length) {
     var placeholderText = "";
     for (var i = 0; i < length; i++) {
@@ -54,23 +64,6 @@ document.getElementById("numerals").addEventListener("input", function() {
     updateInDecimalPlaceholder(this.value.length);
 });
 
-/*
-function updateDecalculatePlaceholder(length) {
-    var placeholderText = "";
-    for (var i = 0; i < length; i++) {
-        placeholderText += i;
-        if (i < length - 1) {
-            placeholderText += ",";
-        }
-    }
-    Decalculate.placeholder = placeholderText || "0";
-}
-
-
-document.getElementById("calculate").addEventListener("input", function() {
-    updateDecalculatePlaceholder(this.value.length);
-});
-*/
 
 // Apply button functionality
 document.getElementById("applyBtn").addEventListener("click", function() {
@@ -79,6 +72,7 @@ document.getElementById("applyBtn").addEventListener("click", function() {
     base = customNumerals.length; // Update the base
     updateInDecimalPlaceholder(customNumerals.length); // Update inDecimal placeholder
     updateResultBox();
+    updateResultBox2();
 });
 
 // Calculation input functionality
@@ -89,10 +83,16 @@ document.getElementById("calculation").addEventListener("keypress", function(e) 
         var result = evaluateCalculation(calculation);
         document.getElementById("resultBox").innerHTML += "<br>  " + calculation + " = " + result;
         document.getElementById("resultBox").style.display = "block";
+
+        document.getElementById("resultBox2").innerHTML += "<br>  " + calculation + " = " + pResult;
+        document.getElementById("resultBox2").style.display = "block";
         // Clear the calculation input field
         document.getElementById("calculation").value = "";
     }
+    console.log("R1");
 });
+
+
 
 // Function to evaluate the calculation
 function evaluateCalculation(calculation) {
@@ -103,6 +103,8 @@ function evaluateCalculation(calculation) {
     // Evaluate the modified calculation
     return evaluate(calculation);
 }
+
+
 
 // Function to evaluate the modified calculation
 function evaluate(calculation) {
@@ -125,6 +127,7 @@ function evaluate(calculation) {
             result /= operand;
         }
     }
+    
     // Convert the result to a string representation in the custom base
     return convertToCustomBase(result);
 }
@@ -142,3 +145,4 @@ function convertToCustomBase(number) {
 
 // Initial update of the result box
 updateResultBox();
+updateResultBox2();
