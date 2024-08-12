@@ -28,13 +28,13 @@ jobs:
 
       - name: Build
         run: |
-          pnpm build
+          pnpm generate
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: .output/public
 
       - name: Deploy
         id: deployment
