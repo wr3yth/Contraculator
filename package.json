@@ -1,29 +1,27 @@
 {
   "name": "contraculator",
-  "version": "1.0.0",
-  "description": "a philosophical calculator that is almost free from most evolutionary pre-assumptions.",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier . --check",
-    "lint:fix": "eslint . --fix && prettier --write --list-different ."
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "nuxt": "^3.12.4",
+    "vue": "latest"
+  },
+  "packageManager": "pnpm@8.14.0+sha1.bb42032ff80dba5f9245bc1b03470d2fa0b7fb2f",
   "devDependencies": {
-    "@eslint/js": "^9.9.0",
+    "@nuxt/eslint": "^0.5.0",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
-    "vite": "^5.4.0"
-  },
-  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "tailwindcss": "^3.4.9"
+  }
 }

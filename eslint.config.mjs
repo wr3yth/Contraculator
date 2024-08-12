@@ -1,24 +1,10 @@
-import config from "eslint-config-standard";
-import eslintConfigPrettier from "eslint-config-prettier";
-import { FlatCompat } from "@eslint/eslintrc";
-import path from "path";
-import { fileURLToPath } from "url";
-  
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import {createConfigForNuxt} from '@nuxt/eslint-config/flat';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname
-});  
-
-export default [
-  ...compat.config(config),
-  eslintConfigPrettier,
-  {
-    ignores: [
-      'dist/**',
-      'node_modules/**',
-      'pnpm-lock.yaml',
-    ],
-  },
-];
+export default createConfigForNuxt()
+  .append(prettierRecommended)
+  .override('nuxt/vue/rules', {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  });
