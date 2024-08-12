@@ -60,7 +60,7 @@ input[type="button"]:hover {
     justify-content: space-between;
 }
 
-#resultBox, #decimalResultBox {
+#resultBox, #resultBox2, #decimalResultBox {
     width: 48%;
     height: 120px;
     background-color: #373b41;
@@ -71,9 +71,7 @@ input[type="button"]:hover {
     box-sizing: border-box;
 }
 
-#decimalResultBox {
-    background-color: #2c2f33; /* Slightly different color to differentiate */
-}
+
 
 
 #calculator {
