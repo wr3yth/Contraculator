@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+coverage
+.nuxt
+node_modules
+public
+pnpm-lock.yaml
+dist
